@@ -1,0 +1,82 @@
+<?php
+
+/**
+* C3_Plugin_PluginName_PluginName
+*
+* @uses
+*
+* @category {{PLUGIN_NAME}}
+* @package  Package
+* @author   Kevin S. Perrine <kperrine@gmail.com>
+* @license  MIT http://opensource.org/licenses/MIT
+* @link     http://kevinsperrine.com
+*/
+class C3_Plugin_PluginName_PluginName
+{
+    protected $wp;
+
+    /**
+     * __construct
+     *
+     * @param $facade \C3_Facade_WordPress Allows inserting a different facade object for testing.
+     *
+     * @access public
+     *
+     * @return void
+     */
+    public function __construct(C3_Facade_WordPress $facade = null)
+    {
+        if ($facade) {
+            $this->wp = new C3_Facade_WordPress();
+        }
+    }
+
+    /**
+     * setFacade
+     *
+     * @param $facade \C3_Facade_WordPress Allows inserting a different facade object for testing.
+     *
+     * @access public
+     *
+     * @return void
+     */
+    public function setFacade(C3_Facade_WordPress $facade)
+    {
+        $this->wp = $facade;
+    }
+
+
+    /**
+     * initialize should take care of registering all hooks and actions. These
+     * calls should be made through the WordPress Facade and not directly to
+     * WordPress.
+     *
+     * @access public
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        $this->wp->add_action('wp_enqueue_scripts', array($this, 'enqueuePublicScripts'));
+    }
+
+    /**
+     * enqueuePublicScripts
+     *
+     * @access public
+     *
+     * @return mixed Value.
+     */
+    public function enqueuePublicScripts()
+    {
+        if (! $this->wp->wp_script_is('jquery', 'enqueue')) {
+            wp_enqueue_script(
+                'jquery',
+                "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js",
+                false,
+                '1.8.3',
+                true
+            );
+        }
+    }
+}
