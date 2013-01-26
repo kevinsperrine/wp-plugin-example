@@ -12,7 +12,7 @@
 * @license  MIT http://opensource.org/licenses/MIT
 * @link     http://kevinsperrine.com
 */
-class C3_Facade_WordPress
+class {{PLUGIN_NAMESPACE}}_Facade_WordPress
 {
     /**
      * Magic __call method that creates a facade for globalwordpress functions.
