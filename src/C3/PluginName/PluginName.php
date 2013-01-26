@@ -1,7 +1,7 @@
 <?php
 
 /**
-* C3_Plugin_PluginName_PluginName
+* {{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_{{PLUGIN_NAME}}
 *
 * @uses
 *
@@ -11,7 +11,7 @@
 * @license  MIT http://opensource.org/licenses/MIT
 * @link     http://kevinsperrine.com
 */
-class C3_Plugin_PluginName_PluginName
+class {{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_{PLUGIN_NAME}}
 {
     protected $wp;
 

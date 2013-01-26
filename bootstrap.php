@@ -9,7 +9,7 @@ Author URI: http://www.kevinsperrine.com/
 License: MIT
 */
 
-function pluginNameAutoloader($className)
+function {{PLUGIN_NAME}}Autoloader($className)
 {
     $paths = array(
         'src/'
@@ -27,10 +27,10 @@ function pluginNameAutoloader($className)
     }
 }
 
-spl_autoload_register('pluginNameAutoloader');
+spl_autoload_register('{{PLUGIN_NAME}}Autoloader');
 
-define('PLUGINNAME_DIR', dirname(__FILE__));
-define('PLUGINNAME_URL', plugin_dir_url(__FILE__));
+define('{{PLUGIN_NAMESACE}}_{{PLUGIN_NAME}}_DIR', dirname(__FILE__));
+define('{{PLUGIN_NAMESACE}}_{{PLUGIN_NAME}}_URL', plugin_dir_url(__FILE__));
 
 $plugin = new C3_PluginName_PluginName();
 
