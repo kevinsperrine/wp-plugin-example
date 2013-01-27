@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: {{PLUGIN_NAME}}
+Plugin Name: {{PLUGIN_DISPLAY_NAME}}
 Plugin URI: {{PLUGIN_URI}}
 Description: {{PLUGIN_DESCRIPTION}}
 Version: 1.0
@@ -29,9 +29,10 @@ function {{PLUGIN_NAME}}Autoloader($className)
 
 spl_autoload_register('{{PLUGIN_NAME}}Autoloader');
 
-define('{{PLUGIN_NAMESACE}}_{{PLUGIN_NAME}}_DIR', dirname(__FILE__));
-define('{{PLUGIN_NAMESACE}}_{{PLUGIN_NAME}}_URL', plugin_dir_url(__FILE__));
+define('{{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_DIR', dirname(__FILE__));
+define('{{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_URL', plugin_dir_url(__FILE__));
 
-$plugin = new C3_PluginName_PluginName();
+$plugin = new {{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_{{PLUGIN_NAME}}(); // PHP 5.2
+// $plugin = new {{PLUGIN_NAMESPACE}}\{{PLUGIN_NAME}}\{{PLUGIN_NAME}}(); // PHP 5.3
 
 $plugin->initialize();

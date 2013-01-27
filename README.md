@@ -22,17 +22,17 @@ All plugins should follow this directory structure, and be named using PSR-2
 naming conventions. If you're writing for PHP 5.3+ then use namespaces, and
 build a directory structure around those namespaces to enable use of a PSR-0
 autoloader function. For example, if we're writing a plugin to create a custom
-post type of Artists for use in the WordPress admin, the class may look like this:
+post type of Books for use in the WordPress admin, the class may look like this:
 
 ### Example PHP 5.3 Class
 ```
 <?php
 
-namespace C3\ArtistManager;
+namespace KevinSPerrine\BookManager;
 
-use C3\Facade\WordPress;
+use KevinSPerrine\Facade\WordPress;
 
-class ArtistManager
+class BookManager
 {
     public function __construct(WordPress $facade = null)
     {
@@ -47,16 +47,16 @@ However, if you're writing for PHP < 5.3, then the structure stays the same, but
 ```
 <?php
 
-class C3_ArtistManager_ArtistManager
+class KevinSPerrine_BookManager_BookManager
 {
-    public function __construct(C3_Facade_WordPress $facade = null)
+    public function __construct(KevinSPerrine_Facade_WordPress $facade = null)
     {
 
     }
 }
 ```
 
-In either case, the appropriate directory structure is `/src/C3/ArtistManager/ArtistManager.php`.
+In either case, the appropriate directory structure is `/src/KevinSPerrine/BookManager/BookManager.php`.
 
 The WordPress plugin tag should be placed in the `bootstrap.php` along a custom autoloader, and other constant declarations. The bootstrap file is responsible for creating the base plugin class and invoking the initialization code.
 
@@ -64,7 +64,7 @@ The WordPress plugin tag should be placed in the `bootstrap.php` along a custom 
 ```
 <?php
 /*
-Plugin Name: {{PLUGIN_NAME}}
+Plugin Name: Book Manager
 Plugin URI: {{PLUGIN_URI}}
 Description: {{PLUGIN_DESCRIPTION}}
 Version: 1.0
@@ -73,13 +73,13 @@ Author URI: http://www.kevinsperrine.com/
 License: MIT
 */
 
-function pluginNameAutoloader($className)
+function BookManagerAutoloader($className)
 {
     $paths = array(
         'src/'
     );
 
-    if (stripos($className, {{PLUGIN_NAMESPACE}}) === false) {
+    if (stripos($className, "KevinSPerrine") === false) {
         return;
     }
 
@@ -91,12 +91,13 @@ function pluginNameAutoloader($className)
     }
 }
 
-spl_autoload_register('pluginNameAutoloader');
+spl_autoload_register('BookManagerAutoloader');
 
 define('PLUGINNAME_DIR', dirname(__FILE__));
 define('PLUGINNAME_URL', plugin_dir_url(__FILE__));
 
-$plugin = new C3_PluginName_PluginName();
+$plugin = new KevinSPerrine_BookManager_BookManager(); // PHP 5.2
+$plugin = new KevinSPerrine\BookManager\BookManager(); // PHP 5.3
 
 $plugin->initialize();
 ```
