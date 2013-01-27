@@ -11,7 +11,7 @@
 * @license  MIT http://opensource.org/licenses/MIT
 * @link     http://kevinsperrine.com
 */
-class {{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_{PLUGIN_NAME}}
+class {{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_{{PLUGIN_NAME}}
 {
     protected $wp;
 
