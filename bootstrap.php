@@ -33,7 +33,9 @@ function {{PLUGIN_NAME}}Autoloader($className)
 
         $fileName .= dirname(__FILE__) . DIRECTORY_SEPARATOR . $path . str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-        require $fileName;
+        if (file_exists($fileName)) {
+            require $fileName;
+        }
     }
 }
 
