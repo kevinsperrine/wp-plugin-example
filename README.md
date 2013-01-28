@@ -84,10 +84,18 @@ function BookManagerAutoloader($className)
     }
 
     foreach ($paths as $path) {
-        $filename = dirname(__FILE__) . DIRECTORY_SEPARATOR . $path . str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
-        if (file_exists($filename)) {
-            return require $filename;
+        $className = ltrim($className, '\\');
+        $fileName  = '';
+        $namespace = '';
+        if ($lastNsPos = strrpos($className, '\\')) {
+            $namespace = substr($className, 0, $lastNsPos);
+            $className = substr($className, $lastNsPos + 1);
+            $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
         }
+
+        $fileName .= dirname(__FILE__) . DIRECTORY_SEPARATOR . $path . str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+
+        require $fileName;
     }
 }
 
@@ -97,7 +105,7 @@ define('PLUGINNAME_DIR', dirname(__FILE__));
 define('PLUGINNAME_URL', plugin_dir_url(__FILE__));
 
 $plugin = new KevinSPerrine_BookManager_BookManager(); // PHP 5.2
-$plugin = new KevinSPerrine\BookManager\BookManager(); // PHP 5.3
+// $plugin = new KevinSPerrine\BookManager\BookManager(); // PHP 5.3
 
 $plugin->initialize();
 ```
