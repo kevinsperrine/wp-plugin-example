@@ -3,6 +3,9 @@
 
 REPLACENAMESPACE="{{PLUGIN_NAMESPACE}}"
 REPLACENAME="{{PLUGIN_NAME}}"
+REPLACEDISPLAYNAME="{{PLUGIN_DISPLAY_NAME}}"
+REPLACEDESCRIPTION="{{PLUGIN_DESCRIPTION}}"
+REPLACEURI="{{PLUGIN_URI}}"
 
 usage()
 {
@@ -54,3 +57,18 @@ find . -depth -name '*{{PLUGIN_NAME}}*' -execdir bash -c 'mv -i $1 ${1/$2/$3}' b
 # # Rename all instances inside of files.
 find . -depth -type f \( -name "*.php" -o -name "*.xml" \) -execdir sed -i "" "s/$REPLACENAMESPACE/$NAMESPACE/g" {} \;
 find . -depth -type f \( -name "*.php" -o -name "*.xml" \) -execdir sed -i "" "s/$REPLACENAME/$NAME/g" {} \;
+
+if [[ -n $DISPLAYNAME ]]
+then
+    find . -depth -type f \( -name "*.php" -o -name "*.xml" \) -execdir sed -i "" "s/$REPLACEDISPLAYNAME/$DISPLAYNAME/g" {} \;
+fi
+
+if [[ -n $DESCRIPTION ]]
+then
+    find . -depth -type f \( -name "*.php" -o -name "*.xml" \) -execdir sed -i "" "s/$REPLACEDESCRIPTION/$DESCRIPTION/g" {} \;
+fi
+
+if [[ -n $URI ]]
+then
+    find . -depth -type f \( -name "*.php" -o -name "*.xml" \) -execdir sed -i "" "s/$REPLACEURI/$URI/g" {} \;
+fi
