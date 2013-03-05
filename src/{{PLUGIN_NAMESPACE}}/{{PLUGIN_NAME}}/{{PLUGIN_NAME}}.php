@@ -24,11 +24,9 @@ class {{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_{{PLUGIN_NAME}}
      *
      * @return void
      */
-    public function __construct(C3_Facade_WordPress $facade = null)
+    public function __construct()
     {
-        if ($facade) {
-            $this->wp = new C3_Facade_WordPress();
-        }
+        $this->setFacade();
     }
 
     /**
@@ -40,9 +38,9 @@ class {{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_{{PLUGIN_NAME}}
      *
      * @return void
      */
-    public function setFacade(C3_Facade_WordPress $facade)
+    public function setFacade(C3_Support_Facade_WordPress $facade = null)
     {
-        $this->wp = $facade;
+        $this->wp = ($facade) ? $facade : new C3_Support_Facade_WordPress();
     }
 
 

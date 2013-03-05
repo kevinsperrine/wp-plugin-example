@@ -44,7 +44,7 @@ spl_autoload_register('{{PLUGIN_NAME}}Autoloader');
 define('{{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_DIR', dirname(__FILE__));
 define('{{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_URL', plugin_dir_url(__FILE__));
 
-$plugin = new {{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_{{PLUGIN_NAME}}(); // PHP 5.2
+${{PLUGIN_NAME}} = new {{PLUGIN_NAMESPACE}}_{{PLUGIN_NAME}}_{{PLUGIN_NAME}}(); // PHP 5.2
 // $plugin = new {{PLUGIN_NAMESPACE}}\{{PLUGIN_NAME}}\{{PLUGIN_NAME}}(); // PHP 5.3
 
-$plugin->initialize();
+${{PLUGIN_NAME}}->initialize();
